@@ -249,12 +249,12 @@ Click `Save` and `Create release` (top right) and go to Release to check if ever
 
 Ok let's go to console and check your services and pods
 <p align="center">
-  <img src="img/kubectlsvcpod.jpg" title="success" />
+  <img src="img/kubectlsvcandpod.jpg" title="success" />
 </p>
 
 And navigate to IP of your service to check if it is up and running.
 <p align="center">
-  <img src="img/running.jpg" title="running" />
+  <img src="img/run.jpg" title="running" />
 </p>
 
 It is working! Congratulation! Your continous integration and delivery setup is ready. You can now use your pipeline to create another `Release` configuration for your test, stage or production environment.
