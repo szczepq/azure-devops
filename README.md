@@ -7,7 +7,7 @@ In this article I will describe how to use Azure DevOps to:
 
 If you don't have a basic knowlage about docker, kubernetes and Azure CLI please check my previous article [Deploying .NET Core Application to Azure Kubernetes Cluster for Less Than 5$](https://softwarehut.com/blog/tech/deploying-net-core-application-to-azure-kubernetes-cluster).
 
-## Why it is worth to automate your Continuous Integration and Delivery processes?
+## What are the benefits of automating Continuous Integration and Delivery processes?
 * you save a lot oh time 
 * you eliminate bugs that happens when you do the same job again and again
 * you deliver your product more often and much faster
