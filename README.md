@@ -2,10 +2,10 @@
 
 In this article I will describe how to use Azure DevOps to:
 * build a docker image of your application
-* push this image to to Azure Container Register
+* push this image to Azure Container Register
 * release your kubernetes deployment to Azure Kubernetes Service
 
-If you don't have a basic knowlage about docker, kubernetes and Azure CLI please check my previous article [Deploying .NET Core Application to Azure Kubernetes Cluster for Less Than 5$](https://softwarehut.com/blog/tech/deploying-net-core-application-to-azure-kubernetes-cluster).
+If you don't have a basic knowledge about docker, kubernetes and Azure CLI please check my previous article [Deploying .NET Core Application to Azure Kubernetes Cluster for Less Than 5$](https://softwarehut.com/blog/tech/deploying-net-core-application-to-azure-kubernetes-cluster).
 
 ## What are the benefits of automating Continuous Integration and Delivery processes?
 * you save a lot oh time 
@@ -15,9 +15,9 @@ If you don't have a basic knowlage about docker, kubernetes and Azure CLI please
 Azure DevOps can help you with that.
 
 ## Azure DevOps
-Azure DevOps can automate your Continous Integration and Delivery process.
+Azure DevOps can automate your Continuous Integration and Delivery process.
 It can get access to you git repository (Azure Repos Git, GitHub and other git repositories).
-It can automaticly react on what you are doing with your repository: 
+It can automatically react on what you are doing with your repository: 
 * run tests when you create a pull request
 * build a docker image when you merge your pull request to selected branch and push it to Azure Container Register (ACR)
 * when everything is ok it can apply changes to your Azure Kubernetes Service (AKS)
@@ -26,7 +26,7 @@ You can use docker images from your ACR to create as many release configuration 
 For example one for dev, test, stage and production environment and decide when you want to release them.
 
 If you don't have your Azure Container Register and Azure Kubernetes Service yet
-you can use necessery Azure CLI commands from my prevoous article:
+you can use necessary Azure CLI commands from my previous article:
 
 ## Azure setup
 
@@ -116,15 +116,15 @@ Now there are few things to do:
   <img src="img/buildservice.jpg" title="build service" />
 </p>
 
-Great! Now we have to push this image to our ACR. Lets add second `Docker Compose` step.
+Great! Now we have to push this image to our ACR. Let's add second `Docker Compose` step.
 The only difference is the Action field: now pick `Push service image`
 <p align="center">
   <img src="img/pushservice.jpg" title="push service" />
 </p>
 
 The third step is optional but recommended. Locking an image version or a repository so that it can't be deleted or updated.
-As before add `Docker Compose` step. The only difference is the Action field. Now pick `Lock image service`.
-`Output Docker Compose File` will fille automaticly.
+As before add `Docker Compose` step. The only difference is the Action field. Now pick `Lock image service`. 
+`Output Docker Compose File` will fill automatically.
 <p align="center">
   <img src="img/lockservice.jpg" title="lock service" />
 </p>
@@ -144,12 +144,12 @@ And `Publish build artifacts` step. Leave it as is.
 </p>
 
 We will use `Artifact name` during Release
-If you want your pipeline to trigger automaticly after each merge go to `Triggers` tab and select `Enable continuous integration`
+If you want your pipeline to trigger automatically  after each merge go to `Triggers` tab and select `Enable continuous integration`
 <p align="center">
   <img src="img/trigger.jpg" title="trigges" />
 </p>
 
-Click on `Build pipeline` and change `Agent Specification` to use Ubuntu (if you prefere Windows then you will have to change all paths to match Windows)
+Click on `Build pipeline` and change `Agent Specification` to use Ubuntu (if you prefer Windows then you will have to change all paths to match Windows)
 <p align="center">
   <img src="img/ubuntu.jpg" title="ubuntu" />
 </p>
@@ -183,7 +183,7 @@ Go to `Release` tab and create a new one
   <img src="img/release.jpg" title="release" />
 </p>
 
-Similary to pipeline configuration I have selected `Empty job`
+Similarly to pipeline configuration I have selected `Empty job`
 <p align="center">
   <img src="img/emptyjob.jpg" title="empty job" />
 </p>
@@ -206,7 +206,7 @@ Add `Kubectl` task
 * change `Service connection type`
 * select `Azure subscription`
 * select `resource group`
-* select `Kubernetes claster`
+* select `Kubernetes cluster`
 * pick `Apply` Command
 * check `Use configuration`
 <p align="center">
@@ -235,7 +235,7 @@ This command is tricky, we have to navigate by `name` to deployment and then to 
   <img src="img/arguments.jpg" title="arguments" />
 </p>
 
-We are specyfying the image version here, this is better practise then just use `:latest` because 
+We are specifying the image version here, this is better practise then just use `:latest` because 
 latest image is always pointing to the newest one (that is created after each merge). 
 It could be ok for your dev environment but not for sure for production one.
 <p align="center">
@@ -257,4 +257,4 @@ And navigate to IP of your service to check if it is up and running.
   <img src="img/run.jpg" title="running" />
 </p>
 
-It is working! Congratulation! Your continous integration and delivery setup is ready. You can now use your pipeline to create another `Release` configuration for your test, stage or production environment.
+It is working! Congratulation! Your  Continuous Integration and Delivery setup is ready. You can now use your pipeline to create another `Release` configuration for your test, stage or production environment.
